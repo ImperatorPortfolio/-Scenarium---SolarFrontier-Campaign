@@ -2,8 +2,8 @@
 <CampaignData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <CampaignId>SolarFrontier</CampaignId>
   <DisplayName>Solar Frontier</DisplayName>
-  <Description>Solar Frontier campaign data for ScenariumAPI. This pack owns campaign content; ScenariumAPI owns the runtime.</Description>
-  <Version>0.1.2</Version>
+  <Description>Solar Frontier campaign data for ScenariumAPI. This pack owns campaign content; ScenariumAPI owns the generic runtime.</Description>
+  <Version>0.3.0</Version>
   <Author>Imperator</Author>
   <StartScenarioId>EARTH_OPENING</StartScenarioId>
   <StartSectorId>EARTH</StartSectorId>
@@ -41,7 +41,7 @@
     <ConquestNodeData>
       <NodeId>UTD_EARTH_OUTPOST_01</NodeId>
       <DisplayName>UTD Earth Military Outpost</DisplayName>
-      <Description>Initial revealed military outpost. MES may spawn this objective while it is revealed.</Description>
+      <Description>Initial revealed military outpost. Scenarium may request the MES spawn group while this node is revealed.</Description>
       <FactionTag>UTD</FactionTag>
       <ScenarioId>EARTH_OPENING</ScenarioId>
       <SectorId>EARTH</SectorId>
@@ -132,5 +132,6 @@
   <Tags>
     <TagData><Key>CampaignPackRepository</Key><Value>ImperatorPortfolio/-Scenarium---SolarFrontier-Campaign</Value></TagData>
     <TagData><Key>NpcPackRepository</Key><Value>ImperatorPortfolio/-MES-AI---United_Terran_Directorate</Value></TagData>
+    <TagData><Key>Authority</Key><Value>Campaign pack owns node order, MES spawn binding, and reveal chain.</Value></TagData>
   </Tags>
 </CampaignData>
