@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CampaignData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CampaignId>SolarFrontier</CampaignId>
+  <DisplayName>Solar Frontier</DisplayName>
+  <Description>Solar Frontier campaign data for ScenariumAPI. This pack owns campaign content; ScenariumAPI owns the runtime.</Description>
+  <Version>0.1.2</Version>
+  <Author>Imperator</Author>
+  <StartScenarioId>EARTH_OPENING</StartScenarioId>
+  <StartSectorId>EARTH</StartSectorId>
+  <InitialState>Loaded</InitialState>
+  <Scenarios>
+    <ScenarioData>
+      <ScenarioId>EARTH_OPENING</ScenarioId>
+      <DisplayName>Earth Opening Campaign</DisplayName>
+      <Description>Initial Earth campaign arc. Players begin by discovering and defeating regional UTD command infrastructure.</Description>
+      <SectorId>EARTH</SectorId>
+      <InitialState>Active</InitialState>
+      <StartingConquestNodeIds>
+        <string>UTD_EARTH_OUTPOST_01</string>
+      </StartingConquestNodeIds>
+    </ScenarioData>
+  </Scenarios>
+  <Factions>
+    <FactionData>
+      <FactionId>UNITED_TERRAN_DIRECTORATE</FactionId>
+      <Tag>UTD</Tag>
+      <DisplayName>United Terran Directorate</DisplayName>
+      <Description>Earth regional government and military faction. Peacetime economy first, escalating to military response when provoked.</Description>
+      <InitialState>Peacetime</InitialState>
+      <CanBeDefeated>true</CanBeDefeated>
+      <HomeSectorIds>
+        <string>EARTH</string>
+      </HomeSectorIds>
+      <StartingConquestNodeIds>
+        <string>UTD_EARTH_OUTPOST_01</string>
+      </StartingConquestNodeIds>
+    </FactionData>
+  </Factions>
+  <Quests />
+  <ConquestNodes>
+    <ConquestNodeData>
+      <NodeId>UTD_EARTH_OUTPOST_01</NodeId>
+      <DisplayName>UTD Earth Military Outpost</DisplayName>
+      <Description>Initial revealed military outpost. MES may spawn this objective while it is revealed.</Description>
+      <FactionTag>UTD</FactionTag>
+      <ScenarioId>EARTH_OPENING</ScenarioId>
+      <SectorId>EARTH</SectorId>
+      <NodeType>MilitaryOutpost</NodeType>
+      <InitialState>Revealed</InitialState>
+      <Position><X>0</X><Y>0</Y><Z>0</Z></Position>
+      <DiscoveryRadiusMeters>5000</DiscoveryRadiusMeters>
+      <IsDefeatCritical>false</IsDefeatCritical>
+      <RevealsOnDestroy>
+        <string>UTD_EARTH_REGIONAL_BASE_01</string>
+      </RevealsOnDestroy>
+      <Integrations>
+        <IntegrationBindingData>
+          <IntegrationId>UTD_OUTPOST_MES_SPAWNGROUP</IntegrationId>
+          <IntegrationType>MES</IntegrationType>
+          <BindingKey>MES.SpawnGroup</BindingKey>
+          <BindingValue>UTD_MilitaryOutpost</BindingValue>
+          <TargetId>UTD_EARTH_OUTPOST_01</TargetId>
+          <Enabled>true</Enabled>
+        </IntegrationBindingData>
+      </Integrations>
+    </ConquestNodeData>
+    <ConquestNodeData>
+      <NodeId>UTD_EARTH_REGIONAL_BASE_01</NodeId>
+      <DisplayName>UTD Earth Regional Military Base</DisplayName>
+      <Description>Regional military base revealed by destroying the outpost.</Description>
+      <FactionTag>UTD</FactionTag>
+      <ScenarioId>EARTH_OPENING</ScenarioId>
+      <SectorId>EARTH</SectorId>
+      <NodeType>RegionalBase</NodeType>
+      <InitialState>Hidden</InitialState>
+      <Position><X>10000</X><Y>0</Y><Z>0</Z></Position>
+      <DiscoveryRadiusMeters>5000</DiscoveryRadiusMeters>
+      <IsDefeatCritical>false</IsDefeatCritical>
+      <RevealsOnDestroy>
+        <string>UTD_EARTH_HQ_01</string>
+      </RevealsOnDestroy>
+      <Integrations>
+        <IntegrationBindingData>
+          <IntegrationId>UTD_REGIONAL_BASE_MES_SPAWNGROUP</IntegrationId>
+          <IntegrationType>MES</IntegrationType>
+          <BindingKey>MES.SpawnGroup</BindingKey>
+          <BindingValue>UTD_RegionalBase</BindingValue>
+          <TargetId>UTD_EARTH_REGIONAL_BASE_01</TargetId>
+          <Enabled>true</Enabled>
+        </IntegrationBindingData>
+      </Integrations>
+    </ConquestNodeData>
+    <ConquestNodeData>
+      <NodeId>UTD_EARTH_HQ_01</NodeId>
+      <DisplayName>UTD Earth Clan HQ</DisplayName>
+      <Description>Defeat-critical HQ node. Destroying this marks UTD defeated.</Description>
+      <FactionTag>UTD</FactionTag>
+      <ScenarioId>EARTH_OPENING</ScenarioId>
+      <SectorId>EARTH</SectorId>
+      <NodeType>Headquarters</NodeType>
+      <InitialState>Hidden</InitialState>
+      <Position><X>20000</X><Y>0</Y><Z>0</Z></Position>
+      <DiscoveryRadiusMeters>5000</DiscoveryRadiusMeters>
+      <IsDefeatCritical>true</IsDefeatCritical>
+      <Integrations>
+        <IntegrationBindingData>
+          <IntegrationId>UTD_HQ_MES_SPAWNGROUP</IntegrationId>
+          <IntegrationType>MES</IntegrationType>
+          <BindingKey>MES.SpawnGroup</BindingKey>
+          <BindingValue>UTD_Headquarters</BindingValue>
+          <TargetId>UTD_EARTH_HQ_01</TargetId>
+          <Enabled>true</Enabled>
+        </IntegrationBindingData>
+      </Integrations>
+    </ConquestNodeData>
+  </ConquestNodes>
+  <Rewards />
+  <InitialWorldState>
+    <WorldStateFactData>
+      <Key>Campaign.Started</Key>
+      <Value>true</Value>
+      <Scope>Global</Scope>
+      <BoolValue>true</BoolValue>
+    </WorldStateFactData>
+    <WorldStateFactData>
+      <Key>Sector.Current</Key>
+      <Value>EARTH</Value>
+      <Scope>Campaign</Scope>
+    </WorldStateFactData>
+  </InitialWorldState>
+  <Integrations />
+  <Tags>
+    <TagData><Key>CampaignPackRepository</Key><Value>ImperatorPortfolio/-Scenarium---SolarFrontier-Campaign</Value></TagData>
+    <TagData><Key>NpcPackRepository</Key><Value>ImperatorPortfolio/-MES-AI---United_Terran_Directorate</Value></TagData>
+  </Tags>
+</CampaignData>
